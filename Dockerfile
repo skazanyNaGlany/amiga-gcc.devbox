@@ -1,8 +1,5 @@
 FROM ubuntu:latest
 
-ADD src /root/src
-WORKDIR /root/src
-
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 ENV LC_CTYPE C.UTF-8
@@ -51,7 +48,9 @@ WORKDIR /opt/amiga-gcc
 
 RUN make clean
 RUN make drop-prefix
-# RUN make all -j3
 RUN make all
 
 ENV PATH="${PATH}:/opt/amiga/bin/"
+
+ADD src /root/src
+WORKDIR /root/src
