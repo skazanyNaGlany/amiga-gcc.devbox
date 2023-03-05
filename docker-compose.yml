@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  amiga-gcc.devbox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    shm_size: 1g
+    mem_limit: 256m
+    hostname: amiga-gcc.devbox
+    volumes:
+      - ./src:/root/src
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY}
+    stdin_open: true
+    tty: true
+
